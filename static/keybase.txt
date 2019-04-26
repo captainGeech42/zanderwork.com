@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/zzzanderw
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://zanderwork.com
+  * I am zzzanderw (https://keybase.io/zzzanderw) on keybase.
+  * I have a public key with fingerprint 93CE 3D82 3135 A7B8 9B5B  F860 0229 413C AB53 552E
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101180e6a8a19f1edf32f801691939b37363021b5c4f92583c75eed220c5357e9a80a",
+            "fingerprint": "93ce3d823135a7b89b5bf8600229413cab53552e",
+            "host": "keybase.io",
+            "key_id": "0229413cab53552e",
+            "kid": "0101180e6a8a19f1edf32f801691939b37363021b5c4f92583c75eed220c5357e9a80a",
+            "uid": "ef59c75c60e52532f22a7dc13fcb9f19",
+            "username": "zzzanderw"
+        },
+        "service": {
+            "hostname": "zanderwork.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1470586506,
+    "expire_in": 157680000,
+    "prev": "fbbaad5e80f750a8e3d6990d8516d147046e3d46ce398ac99d9f86a3a263bb84",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.55
+Comment: https://keybase.io/crypto
+
+yMIlAnicrZJfSBRBHMfPzChDk5IeyjSWoAftnN3Z2ds5CrLUCvoL/SGIjpndWd1O
+d8+9vTNPRShMinywwNBCfbO/iJWFElEWRURmDxkVkVBWVqARRWZQs5pPvbYvy/72
+8/3Mb+Y3d9OSfalJ29429XdGGjYlPbzdEvPt6dx/rFqgtl4lBKuFMJt6sTKdRd1Q
+2NSFoABEIIoqYApRiYgNkekGlAwViAoWMcQUBqACgSRSpMkGlpAKtQBiTJckoCGI
+AgwTFRAhTzBMq4Q5Ece0XK7FUGNQVyUoQkQCVMUUUUNVAJAkLItQI5SHkcR4sNSO
+egneHCVR5jdtXuMfoen2/uX/c9+xKR0zEOaApgCGJMRNkkQCuiZCQ6Pcjj0wyhyL
+lDNOJxIJYunMqRRq8wRejpsa807W28oMMg3YTtiv2eU8HnFs19bsMv6v1HUjQS/q
+VkU8tpLR0F9LiJqWzk+SB+LMiZq2JQRFTmqu6WlFOQCQqiCg5AnsYMR0WMj0CBRQ
+VMAfbxkW50qDUkJ0xFRgBBAgKh+GgjHQVSQqumeRFV6SFT4lrBINYx3z8RBIJAVS
+qsqCt68KyxaCfCWXlHBl1CyxiBtzmFDbf2vfbF9Sqm9OyizvhvlS52XM3LvkA3N9
+fcveXe4b7s4Zijdn50YK0s71xrcVPaAp6YmeMbmgtfXV8fYkcHFhR+75vc/A5/E9
+yTXPX85aHLw5Xvrr7P2uzEtzF1r1TReWFx+tGsg6eyXt9eDKmL/IPtUxkl9ndIdf
+t2QuKvIX3mx/92KX8ORQzY1VNHXn7w3rU5as+fg2bXPj6cmqYXNFRf6Jkbtv1k5s
+/xFOgTu+Zcwf7b06ZMh3btDvvfuEQWs0cZLmL9hauqX7SEwLZh1Ol/s774XeFxZB
+99PqjR/edDXQgWwxuWdSrcv4Uv152H5U/HPZ45cTu3WjOSPnaxskI/Vnsnd87Li2
+5Onsrjm3283Gsedll9ctbbte9wfzBj9j
+=AUcl
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/zzzanderw
+
+==================================================================
