@@ -9,3 +9,5 @@ Zander Work is a sophomore studying Computer Science at [Oregon State University
 He works as a security analyst at the [Oregon Research and Teaching Security Operations Center (ORTSOC)](https://ortsoc.oregonstate.edu/) as a student team lead for network monitoring, using tools such as Zeek, Splunk, Elastic, and Nessus.
 
 He's also the president of the [OSU Security Club](https://www.osusec.org/), leading their CTF and CDC teams to many [impressive accomplishments](https://www.osusec.org/accomplishments/).
+
+You can view the contents of this site on [GitHub](https://github.com/zzzanderw/zanderwork.com).
