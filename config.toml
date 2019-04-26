@@ -34,6 +34,9 @@ theme = "hello-friend-ng"
     name = "linkedin"
     url = "https://linkedin.com/in/zanderwork/"
   [[params.social]]
+    name = "keybase"
+    url = "https://keybase.io/zzzanderw"
+  [[params.social]]
     name = "ctftime"
     url = "https://ctftime.org/team/12858"
 
