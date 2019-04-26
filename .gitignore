@@ -1,1 +1,4 @@
 **/.*.swp
+
+# don't include built site
+public/
