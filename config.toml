@@ -19,7 +19,7 @@ theme = "hello-friend-ng"
   # Default theme "light" or "dark"
   defaultTheme = "dark"
 
-  homeSubtitle = "Security Student, CTF @ OSUSEC"
+  homeSubtitle = "CS/Security Student"
 
   [[params.social]]
     name = "email"
@@ -37,34 +37,20 @@ theme = "hello-friend-ng"
     name = "ctftime"
     url = "https://ctftime.org/team/12858"
 
+  title = "Zander Work"
+  subtitle = ""
+  keywords = "homepage, blog, development, programming, security, cybersecurity, hacking, pwning, ctf"
+  copyright = "Flag icon made by Smashicons"
+  readOtherPosts = "Read other posts"
+
+  [params.logo]
+    logoText = "$ cd ~"
+    logoHomeLink = "/" 
+
 [languages]
   [languages.en]
-    title = "Zander Work"
-    subtitle = ""
-    keywords = "homepage, blog, development, programming, security, cybersecurity, hacking, pwning, ctf"
     copyright = "Flag icon made by Smashicons"
-    readOtherPosts = "Read other posts"
 
-    [languages.en.params.logo]
-      logoText = "zander work"
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
-
-	# You can create a language based menu
-#    [languages.en.menu]
-#      [[languages.en.menu.main]]
-#        identifier = "about"
-#        name = "About"
-#        url = "/about"
-#      [[languages.en.menu.main]]
-#        identifier = "blog"
-#        name = "Blog"
-#        url = "/showcase"
-
-# And you can even create generic menu
 [menu]
   [[menu.main]]
     identifier = "about"
