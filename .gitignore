@@ -1,4 +1,8 @@
+# silly vim
 **/.*.swp
 
 # don't include built site
 public/
+
+# deploy script
+deploy.sh
