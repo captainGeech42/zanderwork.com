@@ -15,6 +15,6 @@ function random_str($length, $keyspace = '23456789abcdefghijkmnopqrstuvwxyzABCDE
 if (strcmp($_GET['length'], "") === 0)
     return;
 
-echo '<pre style="font-size: 18">';
+echo '<pre style="font-size: 24">';
 echo random_str($_GET['length']);
 ?>
