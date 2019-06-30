@@ -47,7 +47,7 @@ theme = "hello-friend-ng"
   readOtherPosts = "Read other posts"
 
   [params.logo]
-    logoText = "$ cd ~"
+    logoText = "cd /home"
     logoHomeLink = "/" 
 
 [languages]
