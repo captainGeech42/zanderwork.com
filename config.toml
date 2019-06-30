@@ -47,7 +47,7 @@ theme = "hello-friend-ng"
   readOtherPosts = "Read other posts"
 
   [params.logo]
-    logoText = "cd /home"
+    logoText = "cd /home/zanderwork"
     logoHomeLink = "/" 
 
 [languages]
@@ -62,7 +62,7 @@ theme = "hello-friend-ng"
   [[menu.main]]
     identifier = "blog"
     name       = "Blog"
-    url        = "/posts"
+    url        = "/blog"
   [[menu.main]]
     identifier = "resume"
     name = "Resume"
