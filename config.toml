@@ -3,8 +3,6 @@ languageCode = "en-us"
 title = "Zander Work"
 theme = "hello-friend-ng"
 
-googleAnalytics = "UA-143082819-1"
-
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
