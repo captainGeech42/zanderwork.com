@@ -28,19 +28,7 @@ With that in mind, here is a diagram of what I ended up with (I'm not the best a
 
 As previously mentioned, the host is a Lenovo Thinkpad T450, running Debian 9, and I'm using VMware Workstation 15 for my hypervisor. Both the hotel network and the WiFi at and around DEFCON are (very) untrusted, so using a VPN is a must. I've been a happy [Private Internet Access (PIA)](https://www.privateinternetaccess.com/) customer for years, and use it on all of my devices. Their Linux client is quite good (it's essentially a glorified GUI running on top of OpenVPN), and has some nice features such as a VPN Kill Switch (if the tunnel drops, all network traffic gets blocked until it's restored) that you can tweak. I've configured PIA to autoconnect on launch, and it does a very good job connecting as soon as my WiFi connection comes up (FYI, networks with captive portals can make this a bit of a pain).
 
-For network protections on the host, I'm using `iptables` to protect against any attempted inbound connections. I'd like to have a deny all outbound rule with exceptions, but that'd require a lot of work and isn't super practical, so a deny all inbound/allow all outbound is what I settled with. I have Docker installed on the host system in case I need to spin up an ad hoc container for something, and it, along with PIA, modify the `iptables` rules when they are run, so I've added additional rules to the `FORWARD` chain to drop all inbound connections heading towards a Docker container in case I make a mistake somewhere else. I've also set the Docker daemon to not run at boot, so in case there's an issue with the firewall rules, the threat size is much smaller, as I have to go out of my way to create a potential hole.
-
-# Virtual Machines
-
-My other firewall is protecting all of the virtual machines (VMs). I'm a big fan of [pfSense](https://www.pfsense.org/), and use it as the border gateway/firewall in my main homelab, so I knew I wanted to use it here. One of the great features of pfSense is that it can act as an OpenVPN client, and NAT/tunnel your LAN traffic through the VPN connection, and PIA has a [great article](https://www.privateinternetaccess.com/helpdesk/guides/routers/pfsense/pfsense-2-4-3-setup-guide) on their website for configuring this.
-
-In addition to my pfSense VM, I have 5 other virtual machines running on the system:
-
-- Windows 10: I believe that it's always a good idea to keep a Windows VM on hand, because the second you don't have one, someone's going to give you a PE64 that won't work in Wine and is (apparently) "mission critical". This may become a [FLARE VM](https://github.com/fireeye/flare-vm) in the future, but for now it's just a clean Windows 10 install with Firefox, Sublime Text, the new shiny [Windows Terminal](https://devblogs.microsoft.com/commandline/introducing-windows-terminal/), and Winlogbeat (see ELK/Elastic Stack below). Also, if I happen to get a Windows binary during a CTF it's much easier to just use Windows.
-- Kali: Again, same point as above. Although most of my CTF tools are configured on my host Debian install, better safe than sorry. Plus, if I ever have the hankering to pwn some (HackThe)Boxes, I've got my tools ready to go.
-- Sensitive: This is a VM running Ubuntu 18.04 that was a later addition to the plan. Before I learned I was going to DEFCON, I had my password manager installed on the host Debian install, and was checking my email and performing other sensitive tasks on the host OS. However, if I'm taking this labtop to DEFCON, I'd prefer to have another layer of defense between a rogue actor on the network and my banking information, so I setup an Ubuntu VM with Full Disk Encryption (FDE) that I use to check email and other equally exhilirating tasks. I'm not sure if the benefits of FDE are as strong in a VM as they are on a physical machine, but the risk outweighed the effort to set it up, so why not. When I'm finished with whatever task I was doing, I have a powered-down snapshot that the VM automatically reverts to, which helps protect any information that may have been transferred to the VM.
-- ELK: As mentioned above, one of the main reasons I set out on this adventure was to test out the [new SIEM capability](https://www.elastic.co/blog/introducing-elastic-siem) that was recently introduced into the Elastic Stack. This VM is running CentOS 7, and has Elasticsearch, Kibana, Logstash, and Filebeat running on it (more details later on.)
-- NSM: I love network security, so obviously my first data collector for the Elastic Stack SIEM was going to be [Zeek](https://www.zeek.org/) (formerly Bro). I've been using Zeek for nearly two years now, and it's a fantastic network security monitoring platform. This VM is running Centos7, and has Zeek inspecting all traffic on the pfSense LAN network, and is shipping its logs to Elasticsearch via Filebeat.
+For network protections on the host, I'm using `iptables` to protect against any attempted inbound connections. I'd like to have a deny all outbound rule with exceptions, but that'd require a lot of work and isn't super practical, so a deny all inbound/allow all outbound is what I settled with. I have Docker installed on the host system in case I need to spin up an ad hoc container for something, and it, along with PIA, modifies the `iptables` rules when they are run, so I've added additional rules to the `FORWARD` chain to drop all inbound connections heading towards a Docker container in case I make a mistake somewhere else. I've also set the Docker daemon to not run at boot, so in case there's an issue with the firewall rules, the threat size is much smaller, as I have to go out of my way to create a potential hole.
 
 # Virtual Network
 
@@ -49,6 +37,16 @@ I'm using [pfSense](https://www.pfsense.org/) as the border network device for a
 - Int 1: NAT. This is the "WAN" interface, and goes through the VMware network stack and out my existing network connection on the host.
 - Int 2: vmnet2. This is the "LAN" interace, and all of the VMs have an interface on this network as well. pfSense is serving DHCP on this network, so any host will get an IP and be able to connect out through the PIA tunnel with no hassle.
 
+# Virtual Machines
+
+In addition to my pfSense VM, I have 5 other virtual machines running on the system:
+
+- Windows 10: I believe that it's always a good idea to keep a Windows VM on hand, because the second you don't have one, someone's going to give you a PE64 that won't work in Wine and is (apparently) "mission critical". This may become a [FLARE VM](https://github.com/fireeye/flare-vm) in the future, but for now it's just a clean Windows 10 install with Firefox, Sublime Text, the new shiny [Windows Terminal](https://devblogs.microsoft.com/commandline/introducing-windows-terminal/), and Winlogbeat (see ELK/Elastic Stack below). Also, if I happen to get a Windows binary during a CTF, it's much easier to just use Windows.
+- Kali: Again, same point as above. Although most of my CTF tools are configured on my host Debian install, better safe than sorry. Plus, if I ever have the hankering to pwn some (HackThe)Boxes, I've got my tools ready to go.
+- Sensitive: This is a VM running Ubuntu 18.04 that was a later addition to the plan. Before I learned I was going to DEFCON, I had my password manager installed on the host Debian install, and was checking my email and performing other sensitive tasks on the host OS. However, if I'm taking this labtop to DEFCON, I'd prefer to have another layer of defense between a rogue actor on the network and my banking information, so I setup an Ubuntu VM with Full Disk Encryption (FDE) that I use to check email and other equally exhilirating tasks. I'm not sure if the benefits of FDE are as strong in a VM as they are on a physical machine, but the risk outweighed the effort to set it up, so why not. When I'm finished with whatever task I was doing, I have a powered-down snapshot that the VM automatically reverts to, which helps protect any information that may have been transferred to the VM.
+- ELK: As mentioned above, one of the main reasons I set out on this adventure was to test out the [new SIEM capability](https://www.elastic.co/blog/introducing-elastic-siem) that was recently introduced into the Elastic Stack. This VM is running CentOS 7, and has Elasticsearch, Kibana, Logstash, and Filebeat running on it (more details later on.)
+- NSM: I love network security, so obviously my first data collector for the Elastic Stack SIEM was going to be [Zeek](https://www.zeek.org/) (formerly Bro). I've been using Zeek for nearly two years now, and it's a fantastic network security monitoring platform. This VM is running Centos7, and has Zeek inspecting all traffic on the pfSense LAN network, and is shipping its logs to Elasticsearch via Filebeat.
+
 The ELK and NSM VMs also have a second NIC that goes to a host-only network running on vmnet1. This allows me to SSH from my host OS into the VMs so that I don't have to work in the VMware Workstation console view. I can also utilize this to view the Kibana dashboard from my host OS as well, which is nice.
 
 # Zeek
@@ -56,7 +54,7 @@ The ELK and NSM VMs also have a second NIC that goes to a host-only network runn
 I'm using a fairly stock Zeek configuration on this setup. The installation instructions [here](https://docs.zeek.org/en/stable/install/install.html) are great, but here are a few things I did in addition:
 
 - I cloned from GitHub to get the latest code (`git clone --recursive https://www.github.com/zeek/zeek.git`). The most notable change is that binaries and file paths/extensions have been changed to Zeek, and the latest stable release (at time of writing, 2.6.2) still uses the Bro nomenclature.
-- I configured Zeek to output JSON logs with ISO8601 timestamps (add this to `local.zeek`):
+- I configured Zeek to output JSON logs with ISO8601 timestamps (add this to `$PREFIX/share/zeek/site/local.zeek`):
 
 ```bro
 @load tuning/json-logs
@@ -69,7 +67,7 @@ That's pretty much it for Zeek so far. I want to install JA3 and HASSH at some p
 
 ## Promiscuous Mode
 
-Promiscuous mode is a mode of operation on a NIC where traffic for all hosts on the network is accepted, and not just traffic destined for that specific NIC. When running tools such as Wireshark or Zeek, the NIC has to be in promiscuous mode, otherwise you're just going to see traffic from your NSM box. When you try do do this on a VMware Workstation VM, you get the following message:
+Promiscuous mode is a mode of operation on a NIC where traffic for all hosts on the network is accepted, and not just traffic destined for that specific NIC. When running tools such as Wireshark or Zeek, the NIC has to be in promiscuous mode, otherwise you're just going to see traffic from your NSM box. When you try to do this on a VMware Workstation VM, you get the following message:
 
 ![VMware Promsicuous Mode Error](/img/prom-error.png)
 
@@ -82,9 +80,9 @@ $ sudo chown :nic-prom /dev/vnmet1 # or whatever vmnet you want
 $ sudo chmod g+rw /dev/vmnet1
 ```
 
-Note: If you want to do promiscuous on a `LAN Segment`, you need to set the permissions on `/dev/vmnet0`.
+Note: If you want to do promiscuous on a `LAN Segment` or the default `Bridged Network`, you need to set the permissions on `/dev/vmnet0`. If you want to do it on the default `NAT Network`, set it on `/dev/vmnet8`. If you want to do it on the default `Host-Only Network`, set it on `/dev/vmnet1`.
 
-However, this doesn't persist acros reboot, so I made this addition to the end of the `vmwareStartVmnet()` function in `/etc/init.d/vmware`:
+However, this doesn't persist across reboot, so I made this addition to the end of the `vmwareStartVmnet()` function in `/etc/init.d/vmware`:
 
 ```bash
 for int in /dev/vmnet1 /dev/vmnet2 /dev/vmnet3 /dev/vmnet8; do
@@ -185,7 +183,7 @@ Also, there is the most important configuration change in the whole setup right 
 
 ## Usage
 
-Kibana has a great Zeek dashboard that pulls out lots of nice data for us to look at for a high-level overview of our network. It has a map with GeoIP data, information about top hosts and applications, and more:
+Kibana has a great Zeek dashboard that pulls out lots of nice stats for us to look at for a high-level overview of our network. It has a map with GeoIP data, information about top hosts and applications, and more:
 
 ![Kibana Dashboard](/img/zeek-dashboard.png)
 
@@ -209,4 +207,4 @@ I definitely want to do a v2.0 of this system. Having a mobile lab environment c
 
 # Conclusion
 
-It's great to have a lab with me wherever I go, and I'm enjoying the flexibility for testing things out on a seperate system. However, I can't run all of my VMs at the same time, due to CPU and memory constraints. This also mimics a real-world component, resource restrictions (yay for me!). All in all, this has been a greatexperience and I'll hopefully have an update in a few weeks with SIEM improvements and more data being ingested.
+It's great to have a lab with me wherever I go, and I'm enjoying the flexibility of testing things out on a seperate system. However, I can't run all of my VMs at the same time, due to CPU and memory constraints. This also mimics a real-world component, resource restrictions (yay for me!). All in all, this has been a great experience and I'll hopefully have an update in a few weeks with SIEM improvements and more data being ingested.
