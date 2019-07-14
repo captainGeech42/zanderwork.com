@@ -6,58 +6,78 @@ I hereby claim:
 
   * I am an admin of http://zanderwork.com
   * I am zzzanderw (https://keybase.io/zzzanderw) on keybase.
-  * I have a public key with fingerprint 93CE 3D82 3135 A7B8 9B5B  F860 0229 413C AB53 552E
+  * I have a public key with fingerprint 2DD6 3FD0 943E 9D13 796C  3FFB DA9D 904D 4F7C 7C53
 
 To do so, I am signing this object:
 
 {
-    "body": {
-        "key": {
-            "eldest_kid": "0101180e6a8a19f1edf32f801691939b37363021b5c4f92583c75eed220c5357e9a80a",
-            "fingerprint": "93ce3d823135a7b89b5bf8600229413cab53552e",
-            "host": "keybase.io",
-            "key_id": "0229413cab53552e",
-            "kid": "0101180e6a8a19f1edf32f801691939b37363021b5c4f92583c75eed220c5357e9a80a",
-            "uid": "ef59c75c60e52532f22a7dc13fcb9f19",
-            "username": "zzzanderw"
-        },
-        "service": {
-            "hostname": "zanderwork.com",
-            "protocol": "http:"
-        },
-        "type": "web_service_binding",
-        "version": 1
+  "body": {
+    "key": {
+      "eldest_kid": "01207175a3b0421aed91485dea53ccb0c3181bf337174f0da83f139c390ee2254e3a0a",
+      "fingerprint": "2dd63fd0943e9d13796c3ffbda9d904d4f7c7c53",
+      "host": "keybase.io",
+      "key_id": "da9d904d4f7c7c53",
+      "kid": "0101b3c33c2496c00cca5167b7e2944e53b6f2f0f1a1392d98c7b448c8bee7eba22c0a",
+      "uid": "ef59c75c60e52532f22a7dc13fcb9f19",
+      "username": "zzzanderw"
     },
-    "ctime": 1470586506,
-    "expire_in": 157680000,
-    "prev": "fbbaad5e80f750a8e3d6990d8516d147046e3d46ce398ac99d9f86a3a263bb84",
-    "seqno": 6,
-    "tag": "signature"
+    "merkle_root": {
+      "ctime": 1562504621,
+      "hash_meta": "befb65c175cf3ff574b2d93c88b0d63324f5d01049c48f75ac42f62aa409f8c8",
+      "seqno": 5708744
+    },
+    "revoke": {
+      "sig_ids": [
+        "5a3318ce5f7ab1912bb90f7fcc6c5b26b0dc610b9d07b8a6e71b51a56ba991c00f"
+      ]
+    },
+    "service": {
+      "hostname": "zanderwork.com",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1562504622,
+  "expire_in": 157680000,
+  "prev": "cb8d905e7fb3d20b00deb7d06dc0b7161abbb32bbaf5980e62b1413817647410",
+  "seqno": 66,
+  "tag": "signature"
 }
 
 which yields the signature:
 
 -----BEGIN PGP MESSAGE-----
-Version: Keybase OpenPGP v2.0.55
+Version: Keybase OpenPGP v2.1.0
 Comment: https://keybase.io/crypto
 
-yMIlAnicrZJfSBRBHMfPzChDk5IeyjSWoAftnN3Z2ds5CrLUCvoL/SGIjpndWd1O
-d8+9vTNPRShMinywwNBCfbO/iJWFElEWRURmDxkVkVBWVqARRWZQs5pPvbYvy/72
-8/3Mb+Y3d9OSfalJ29429XdGGjYlPbzdEvPt6dx/rFqgtl4lBKuFMJt6sTKdRd1Q
-2NSFoABEIIoqYApRiYgNkekGlAwViAoWMcQUBqACgSRSpMkGlpAKtQBiTJckoCGI
-AgwTFRAhTzBMq4Q5Ece0XK7FUGNQVyUoQkQCVMUUUUNVAJAkLItQI5SHkcR4sNSO
-egneHCVR5jdtXuMfoen2/uX/c9+xKR0zEOaApgCGJMRNkkQCuiZCQ6Pcjj0wyhyL
-lDNOJxIJYunMqRRq8wRejpsa807W28oMMg3YTtiv2eU8HnFs19bsMv6v1HUjQS/q
-VkU8tpLR0F9LiJqWzk+SB+LMiZq2JQRFTmqu6WlFOQCQqiCg5AnsYMR0WMj0CBRQ
-VMAfbxkW50qDUkJ0xFRgBBAgKh+GgjHQVSQqumeRFV6SFT4lrBINYx3z8RBIJAVS
-qsqCt68KyxaCfCWXlHBl1CyxiBtzmFDbf2vfbF9Sqm9OyizvhvlS52XM3LvkA3N9
-fcveXe4b7s4Zijdn50YK0s71xrcVPaAp6YmeMbmgtfXV8fYkcHFhR+75vc/A5/E9
-yTXPX85aHLw5Xvrr7P2uzEtzF1r1TReWFx+tGsg6eyXt9eDKmL/IPtUxkl9ndIdf
-t2QuKvIX3mx/92KX8ORQzY1VNHXn7w3rU5as+fg2bXPj6cmqYXNFRf6Jkbtv1k5s
-/xFOgTu+Zcwf7b06ZMh3btDvvfuEQWs0cZLmL9hauqX7SEwLZh1Ol/s774XeFxZB
-99PqjR/edDXQgWwxuWdSrcv4Uv152H5U/HPZ45cTu3WjOSPnaxskI/Vnsnd87Li2
-5Onsrjm3283Gsedll9ctbbte9wfzBj9j
-=AUcl
+yMQCAnicbZN7bBRFHMcPjkJoAVtESwgKbkJSSSkzs4/ZbQgCRgK00BjBBKE9ZmZn
+2rX09ti79uiLlLQlYghpQiOGRwUhpLRAaqCiVd4ILcpDaSPyStpcBalQoAFF0ThX
+JSbG/Wezu9/f9/f9fX6zp0f7fYlDrm6vW5hTUfHWkK9Pri725b5y90C5Ql27VMks
+Vwr54I2vtHk4Eih0bCVTARABDLFOVAo0BAm3LaiZus2JrjJGAVOhCalQVSnSBLCJ
+qQqoWky1AOcI6RpXCSBKuiKcYD73Qp4TjEhbZNuGKmxgaSq3bKhiy2CqENQmlm0B
+zdYEZpjpqiwscMPxChmOkjDPcFz5Tj4EBuP9j/5ZbgCpylSVIU16A8AY0aGBKebI
+0jSuq9QQSAABiYyLbMtkmGqayUzKOeaUIMQGcxcP2nGhWwzrzABcR7qKBEIE2wyq
+glFLQCsuDHMvSIq4VJeVlZGgzb2oUpmuFHGvcCUPeK4bidNlESeugbqBdKAZCMoJ
+SbggUMQjRJZSLqihM0mcCQlExxqV4VRmmhRIZCrShG7L4TSLaaaQe2EaEgYiRAOW
+kOllkDBfFXSVTB0DE2uaTODxEreQx5uHnXzJLaxkLlPkRuXqGNcFJhRaEFFqAYEF
+YwbTKTJkO2ZAQC0bYGoSg2NIdUh0gxLLghKoUHIr4828EocNmscX9QzA3+O7XmEG
+c4tkppDnRlzmrpTfCiKRUGYcTKQ0FNdGOQ384xKgTtCW50QWlHAv7LhBCUoq/8sM
+pSt8dcjxeMCJK3RsmEBe8Ta8RFoyaspToXMsqGojQAGwOcU2MGwGKIYGJJRSVU5M
+5FpNwA1EoQZVE2JDwxoE/0I0DJmT5EtPiS5IIsUeVypPnlg+zDck0Tc8YWj8B/Il
+jkx+9ludaE72ba/rvFmRdTF0p2rY4uWpu4KHSGT9YW9goOny+O+2FtaJ5l/+GBtU
+QtmHpmZ/vvHg0tf9IWdiU/7wBXmrq3ed3mM8zfWvT39nSePSH2lHy7FF3NiS6ebG
+6ntb3ts4JdoZS2vxsjeNzEoqbU7qnDYir+vjL/vOdMYqSxrXbJ2QOntK9ZNr+4xc
+/5xxbzf0JF451Z3c7vt0/vV5XfuPTnj/+3sNe+qXPX5zzt2s1OenpsfWNVQ0tv28
+uMfr3rtmUl5K7FHeijfWxiLFB8f0fnMr5+6Hq44/jj5su0Amlyc3jV93X6RtPvWJ
+v3FDdfSLPTObP7v5tPb3pFI/Sjmbc7V984U7tSO2LLBTa4rPNf12pKbAaHttVOhJ
+R0L/r7W5rdhxZ22r3110vG8uSjq/acO2Ge3Rx9MzbrxQlb80q3X/zVXjuqaUxKoO
+5B1Zm11/6wz7NqHGm9TSdDvt6b1LNYHRF6omTk/j5yc998NLHTPnTm0//Ojy0ITG
+hroVzitXWrNbz3bF+j8InavOzOmpWjiBDy/YeGn22X39Zcuii1/tPjqv7FLfw/4H
+94ddq2hLrG17NMM5nDa29kFfysvwavv9faPGRS6WHnxxL0br4c7dD5e3+2tnXM+o
+fBeP3nmkel7K5Bt9X4WLDx0b2MvUHTumTwY7DtyedixpyU9Z3eGPTs4it8aE5s8c
+1dG7qKd8btbOiQMjl/zZ+xcg3gxB
+=GTYi
 -----END PGP MESSAGE-----
 
 And finally, I am proving ownership of this host by posting or
@@ -66,3 +86,4 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/zzzanderw
 
 ==================================================================
+
