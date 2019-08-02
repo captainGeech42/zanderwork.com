@@ -64,6 +64,10 @@ theme = "hello-friend-ng"
     name       = "Blog"
     url        = "/blog"
   [[menu.main]]
+    identifier = "projects"
+    name       = "Projects"
+    url        = "/projects"
+  [[menu.main]]
     identifier = "resume"
     name = "Resume"
     url = "/resume.pdf"
