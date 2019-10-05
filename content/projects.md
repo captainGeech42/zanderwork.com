@@ -1,7 +1,6 @@
 ---
 title: "Projects"
 date: 2019-07-14T14:00:29-04:00
-draft: true
 ---
 
 ### Homelab
@@ -14,3 +13,5 @@ In progress [diagram](/lab.png)
 
 ### OSU Security Club WiFi Demo
 [GitHub repo](https://github.com/osusec/wifi-demo/)
+
+_more projects will be added soon_
