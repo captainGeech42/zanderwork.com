@@ -10,4 +10,4 @@ He works as a security analyst at the [Oregon Research and Teaching Security Ope
 
 He's also the president of the [OSU Security Club](https://www.osusec.org/), leading their CTF and CDC teams to many [impressive accomplishments](https://www.osusec.org/accomplishments/). He competes in lots of CTFs with the club under the team [OSUSEC](https://ctftime.org/team/12858). 
 
-You can view the contents of this site on [GitHub](https://github.com/zzzanderw/zanderwork.com).
+You can view the contents of this site on [GitHub](https://github.com/captainGeech42/zanderwork.com).

@@ -26,10 +26,10 @@ theme = "hello-friend-ng"
     url = "mailto:zander@zanderwork.com"
   [[params.social]]
     name = "twitter"
-    url = "https://twitter.com/zzzanderw"
+    url = "https://twitter.com/captainGeech42"
   [[params.social]]
     name = "github"
-    url = "https://github.com/zzzanderw"
+    url = "https://github.com/captainGeech42"
   [[params.social]]
     name = "linkedin"
     url = "https://linkedin.com/in/zanderwork/"
