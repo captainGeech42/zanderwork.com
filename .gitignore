@@ -6,3 +6,5 @@ public/
 
 # deploy script
 deploy.sh
+
+.DS_Store
