@@ -1,7 +1,7 @@
 ---
 title: "SAIGON is public, hip hip hooray!"
 date: 2020-01-13T09:42:22-08:00
-draft: true
+draft: false 
 tags:
     - security
 ---
