@@ -4,7 +4,7 @@ date: 2019-04-25T17:47:16-07:00
 draft: false
 ---
 
-Zander Work is a sophomore studying Computer Science at [Oregon State University](https://www.oregonstate.edu/), focusing on security. He is also minoring in Asian Languages and Cultures, and Business and Entrepreneurship.
+Zander Work is a junior studying Computer Science at [Oregon State University](https://www.oregonstate.edu/), focusing on security. He is also minoring in Asian Languages and Cultures. He is a member of [Dr. Yeongjin Jang's](https://www.unexploitable.systems/) research group ([SSH Lab](https://ssh.unexploitable.systems/)), focusing on software and systems security.
 
 Currently, he works as Technical Intelligence Intern at [FireEye, Inc.](https://www.fireeye.com) on the Financial Crime team, analyzing malware and tracking new fincrime threats. Previously, he worked as a security analyst at the [Oregon Research and Teaching Security Operations Center (ORTSOC)](https://ortsoc.oregonstate.edu/) as a student team lead for network monitoring, using tools such as Zeek, Splunk, Elastic, and Nessus.
 
