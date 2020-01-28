@@ -25,7 +25,7 @@ There are two CTF challenges running off the Pi:
 
 These challenges are going to be used in an upcoming CTF event hosted by OSUSEC, and after that is over more details about the challenges and source code for the electronics will be made public.
 
-![Wifi Demo](/img/stardestroyer.png)
+![Star Destroyer](/img/stardestroyer.jpg)
 ### OSU Security Club Discord Bot
 This is a Discord bot to support the [OSU Security Club](https://www.osusec.org) Discord Server.
 
