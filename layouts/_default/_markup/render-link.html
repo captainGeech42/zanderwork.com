@@ -1,0 +1,3 @@
+{{- /* https://agrimprasad.com/post/hugo-goldmark-markdown/#how-to-open-links-in-a-new-tab-with-markdown-in-hugo */ -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank"{{ end }}>{{ .Text }}</a>
+{{- /* fix the trailing whitespace https://discourse.gohugo.io/t/white-space-issue-in-markdown/25258/10 */ -}}
