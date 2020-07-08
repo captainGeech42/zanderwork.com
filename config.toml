@@ -47,7 +47,7 @@ theme = "hello-friend-ng"
   readOtherPosts = "Read other posts"
 
   [params.logo]
-    logoText = "cd /home/zanderwork"
+    logoText = "cd /zander/work"
     logoHomeLink = "/" 
 
 [languages]
