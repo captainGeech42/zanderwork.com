@@ -5,6 +5,9 @@ theme = "hello-friend-ng"
 
 googleAnalytics = "UA-143082819-1"
 
+[author]
+  name = "Zander Work"
+
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
