@@ -14,4 +14,4 @@ Currently, he works as a security analyst at the [Oregon Research and Teaching S
 
 He's also the current CTF team lead and former president (2017-2020) of the [OSU Security Club](https://www.osusec.org/), leading their CTF and CDC teams to many [impressive accomplishments](https://www.osusec.org/accomplishments/). He competes in lots of CTFs with the club under the team [OSUSEC](https://ctftime.org/team/12858). 
 
-You can view the contents of this site on [GitHub](https://github.com/captainGeech42/zanderwork.com).
+This site is available via [clearnet](https://zanderwork.com) and [Tor](http://zandermuwtlu6gr4z4ey2bnogf56este6o742ydwytxp7qj772n3zuyd.onion/). You can view the contents of this site on [GitHub](https://github.com/captainGeech42/zanderwork.com).

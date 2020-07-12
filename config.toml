@@ -20,7 +20,7 @@ googleAnalytics = "UA-143082819-1"
   images = [""]
 
   # Directory name of your blog content (default is `content/posts`)
-  contentTypeName = "posts"
+  contentTypeName = "blog"
   # Default theme "light" or "dark"
   defaultTheme = "dark"
 
