@@ -86,7 +86,7 @@ I set the following options in my `/etc/ssh/sshd_config`:
 * `X11Forwarding no`: Disable X11 forwarding. Depending on your use case you may need to enable this.
 * `PrintMotd no`: Disable printing the MOTD. This can be enabled/configured to your liking.
 * `AcceptEnv LANG LC_*`: Accept locale variables from SSH client
-* `AllowUsers lowpriv`: Whitelist the `lowpriv` user. This (in combination with `PermitRootLogin no`)effectively disables all other users from SSHing in.
+* `AllowUsers lowpriv`: Whitelist the `lowpriv` user. This (in combination with `PermitRootLogin no`) effectively disables all other users from SSHing in.
 
 Here is the final config:
 
@@ -163,7 +163,7 @@ However, there are a few improvements we can make for using a jump host.
 ### Agent Forwarding
 
 
-However, this is a slow and inefficient workflow, requires additional credentials to reside on the jump host, and doesn't lend itself well to automation. SSH has a number of very cool features, one of which is agent forwarding. Using the following SSH config, we can automate proxing through the jump host to our final destination with one command:
+The above authentication workflow is slow and inefficient, requires additional credentials to reside on the jump host, and doesn't lend itself well to automation. SSH has a number of very cool features, one of which is agent forwarding. Using the following SSH config, we can automate proxing through the jump host to our final destination with one command:
 
 {{< gist captainGeech42 3a11b6b7f6649cb1c8b0c850a4689089 >}}
 
