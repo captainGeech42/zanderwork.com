@@ -8,7 +8,9 @@ tags:
   - infra
 ---
 
-Most infrastructure deployments contain systems that should be protected and not allow anyone on the Internet to log in to. Today, I will be going over a few different ways to secure a jump host (also known as a bastion host).
+Most infrastructure deployments contain systems that should be protected and not allow anyone on the Internet to log in to. Today, I will be going over a few different ways to secure a jump host (also known as a bastion host), which can be used as an entry point into a secure infrastructure environment.
+
+When using a jump host, internal systems can have firewall rules configured to only allow SSH access from the jump host, or the jump host can have two NICs, one on the public Internet, and another on your internal network.
 
 Command examples starting with `#` are run as root, and `$` are run as a normal user.
 
