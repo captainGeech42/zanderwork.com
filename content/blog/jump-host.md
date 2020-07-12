@@ -65,7 +65,6 @@ In the above scenario, the private key lives on your computer, and either has to
 Krypton is designed for securing MFA for common websites, but if you enable Developer Mode in the app on your phone you can setup SSH and PGP as well. I'm not going to go in depth on setting it up in this post, but it's pretty straightforward and I'd highly recommend it.
 
 ## SSH Config
-no root auth, non-standard port, no password auth
 
 _**IMPORTANT**_: Before the below modifications to the SSH config, ensure that you have tested logging as the `lowpriv` user, as in this section we will be disallowing any other account from using SSH.
 
