@@ -197,3 +197,23 @@ You can also configure this in your SSH config (this does the same as `-L 127.0.
 {{< gist captainGeech42 8b7e2e22a77fb3cc013e118e26a899c8 >}}
 
 This is especially useful for accessing internal websites and RDP servers.
+
+### Destination Firewall
+
+Once you've tested connecting to your remote system, firewall rules should be put in place to restrict access to the SSH daemon from only the jump host, otherwise there isn't nearly as much of an added security benefit.
+
+You can do this using `iptables` (make sure to replace `jump-ip-here` with your actual jump host IP):
+
+```
+# iptables -A INPUT -p tcp --dport 22 -s jump-ip-here -j ACCEPT
+# iptables -A INPUT -p tcp --dport 22 -j DROP
+```
+
+After testing to make sure these rules properly drop outside connections and allow connections from the jump host, ensure the rules will persist across reboot by doing the following (install command will vary on different distros):
+
+```
+# apt install iptables-persistent netfilter-persistent
+# iptables-save > /etc/iptables/rules.v4
+# systemctl restart netfilter-persistent
+# systemctl enable netfilter-persistent
+```
