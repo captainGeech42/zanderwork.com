@@ -145,7 +145,7 @@ Finally, restart the `fail2ban` daemon to apply the new jail config:
 systemctl restart fail2ban
 ```
 
-## Agent Forwarding
+## Usage
 
 Right now, you can SSH into the jump host and then start another SSH connection to your destination:
 
@@ -156,6 +156,11 @@ lowpriv@jumphost:~$ ssh root@secretserver
 ...
 root@secretserver:~#
 ```
+
+However, there are a few improvements we can make for using a jump host.
+
+### Agent Forwarding
+
 
 However, this is a slow and inefficient workflow, requires additional credentials to reside on the jump host, and doesn't lend itself well to automation. SSH has a number of very cool features, one of which is agent forwarding. Using the following SSH config, we can automate proxing through the jump host to our final destination with one command:
 
@@ -172,7 +177,7 @@ However, this has a couple caveats
 1. The final destination (in the above example, `secretserver`) needs to have your local public key in its `authorized_keys` file. The above config uses the authentication on the starting point, not a keypair on the jump host
 2. The final destination needs to configured to accept forwarded agents. This is the default behavior and usually won't be an issue.
 
-## Port Forwarding
+### Port Forwarding
 
 Another valuable use case for the jump host is to enable access to internal resources from your local machine. This is also possible using SSH local port forwarding, which can be configured at connection time on the command line, or in your SSH config file.
 
@@ -186,8 +191,8 @@ Now, you can connect to `localhost:8080` and access `myhostcom:80` as if you wer
 
 _**WARNING**_: By default, `-L 8080:myhost.com:80` establishes a listener at `0.0.0.0:8080` on your local system, allowing anyone on your network to connect to your system over port 8080 and get forwarded to the remote system. It is highly advised to configure with `-L 127.0.0.1:8080:myhost.com:80` instead to limit the exposure of the forwarded service.
 
-You can also configure this in your SSH config:
+You can also configure this in your SSH config (this does the same as `-L 127.0.0.1:8080:myhost.com:80`):
 
 {{< gist captainGeech42 8b7e2e22a77fb3cc013e118e26a899c8 >}}
 
-(this does the same as `-L 127.0.0.1:8080:myhost.com:80`)
+This is especially useful for accessing internal websites and RDP servers.
