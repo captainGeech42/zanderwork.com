@@ -8,7 +8,7 @@ tags:
   - security
 ---
 
-# Introduction 
+## Introduction 
 This summer, I'm in Virginia for an internship at FireEye. I'm staying in an extended stay hotel, which is nice, but unfortunately I was unable to haul all my servers across the country (I'm sure TSA would've loved it, though.) Since I'm unable to have my full lab running in Oregon while I'm gone, I've had to get creative with labbing things in Virginia. The only tech I was able to bring was some (compact) Ubiquiti networking gear, my Macbook, my Thinkpad, and my Nintendo Switch. Even though I can't have the full homelab experience on the road, I still wanted to experiment with things (namely, the new Elastic Stack SIEM), so I set out to stand up a mobile lab enviornment on my newly dubbed "labtop" (trademark pending).
 
 The solution I've deployed isn't perfect or super clean, but it gets the job done. I had a few goals in mind when putting this system together:
@@ -18,26 +18,26 @@ The solution I've deployed isn't perfect or super clean, but it gets the job don
 - It needs to allow for rapid iteration. I don't want it to take a couple hours just to spin up a new VM and get networking configured, so a system that combines security with speed is a necessity.
 - It needs to be robust and redundant wherever practical. Obviously I can't have redundant uplinks or hosts on a single laptop, but I can design overlapping protections that help pick up the slack in case something stops working or I make a mistake along the line.
 
-# Diagram
+## Diagram
 
 With that in mind, here is a diagram of what I ended up with (I'm not the best at diagrams, so there's a detailed description below):
 
 ![Diagram](/img/mobile-lab-diagram.png)
 
-# Host Protections
+## Host Protections
 
 As previously mentioned, the host is a Lenovo Thinkpad T450, running Debian 9, and I'm using VMware Workstation 15 for my hypervisor. Both the hotel network and the WiFi at and around DEFCON are (very) untrusted, so using a VPN is a must. I've been a happy [Private Internet Access (PIA)](https://www.privateinternetaccess.com/) customer for years, and use it on all of my devices. Their Linux client is quite good (it's essentially a glorified GUI running on top of OpenVPN), and has some nice features such as a VPN Kill Switch (if the tunnel drops, all network traffic gets blocked until it's restored) that you can tweak. I've configured PIA to autoconnect on launch, and it does a very good job connecting as soon as my WiFi connection comes up (FYI, networks with captive portals can make this a bit of a pain).
 
 For network protections on the host, I'm using `iptables` to protect against any attempted inbound connections. I'd like to have a deny all outbound rule with exceptions, but that'd require a lot of work and isn't super practical, so a deny all inbound/allow all outbound is what I settled with. I have Docker installed on the host system in case I need to spin up an ad hoc container for something, and it, along with PIA, modifies the `iptables` rules when they are run, so I've added additional rules to the `FORWARD` chain to drop all inbound connections heading towards a Docker container in case I make a mistake somewhere else. I've also set the Docker daemon to not run at boot, so in case there's an issue with the firewall rules, the threat size is much smaller, as I have to go out of my way to create a potential hole.
 
-# Virtual Network
+## Virtual Network
 
 I'm using [pfSense](https://www.pfsense.org/) as the border network device for all of the VMs. I'm a big fan of pfSense, and use it as the border gateway/firewall in my main homelab, so I knew I wanted to use it here. One of the great features of pfSense is that it can act as an OpenVPN client, and NAT/tunnel your LAN traffic through the VPN connection, and PIA has a [great article](https://www.privateinternetaccess.com/helpdesk/guides/routers/pfsense/pfsense-2-4-3-setup-guide) on their website for configuring this. If the VPN tunnel goes down, all outbound network communication stops, which is perfect for this system. I have the pfSense VM configured with the following interfaces:
 
 - Int 1: NAT. This is the "WAN" interface, and goes through the VMware network stack and out my existing network connection on the host.
 - Int 2: vmnet2. This is the "LAN" interace, and all of the VMs have an interface on this network as well. pfSense is serving DHCP on this network, so any host will get an IP and be able to connect out through the PIA tunnel with no hassle.
 
-# Virtual Machines
+## Virtual Machines
 
 In addition to my pfSense VM, I have 5 other virtual machines running on the system:
 
@@ -49,7 +49,7 @@ In addition to my pfSense VM, I have 5 other virtual machines running on the sys
 
 The ELK and NSM VMs also have a second NIC that goes to a host-only network running on vmnet1. This allows me to SSH from my host OS into the VMs so that I don't have to work in the VMware Workstation console view. I can also utilize this to view the Kibana dashboard from my host OS as well, which is nice.
 
-# Zeek
+## Zeek
 
 I'm using a fairly stock Zeek configuration on this setup. The installation instructions [here](https://docs.zeek.org/en/stable/install/install.html) are great, but here are a few things I did in addition:
 
@@ -65,7 +65,7 @@ redef LogAscii::use_json = T;
 
 That's pretty much it for Zeek so far. I want to install JA3 and HASSH at some point and play with some custom scripts, but I haven't gotten to that yet.
 
-## Promiscuous Mode
+### Promiscuous Mode
 
 Promiscuous mode is a mode of operation on a NIC where traffic for all hosts on the network is accepted, and not just traffic destined for that specific NIC. When running tools such as Wireshark or Zeek, the NIC has to be in promiscuous mode, otherwise you're just going to see traffic from your NSM box. When you try to do this on a VMware Workstation VM, you get the following message:
 
@@ -93,15 +93,15 @@ done
 
 When VMware starts up at boot, it will run that loop when it initializes networking, thus setting our permissions and allowing promiscuous mode.
 
-# Elastic Stack
+## Elastic Stack
 
 The main attraction of this lab is the Elastic Stack deployment. I still have a lot to configure and tune in the future, but so far so good.
 
-## Data Collection (Beats)
+### Data Collection (Beats)
 
 Currently I have two Beats collecting data. I'm using Filebeat on the NSM system for my Zeek Logs, and Winlogbeat on the Windows 10 system to forward event logs. Elastic has done a great job at making these super simple to configure, and all you have to do is tell them where the logs are, and where to send them (you can do more complex operations with Pipelines or forwarding to Logstash for processing, but it's not required).
 
-### Zeek
+#### Zeek
 
 Filebeat has a module for Zeek, which is fantastic. Once it's installed, all you have to do is:
 
@@ -135,7 +135,7 @@ output.elasticsearch:
 # snip
 ```
 
-### Windows Event Log
+#### Windows Event Log
 
 Winlogbeat's out of the box config is perfect for what I needed, so I just had to set the Elasticsearch/Kibana info in the config file (`C:\Program Files\Winlogbeat\winlogbeat.yml`):
 
@@ -152,7 +152,7 @@ output.elasticsearch:
 # snip
 ```
 
-## Elasticsearch
+### Elasticsearch
 
 Elasticsearch had a few things to be configured. I needed to set the name of the host and cluster, and tell Elasticsearch about the cluster config so that it knows how to elect a "master node". Since there's only one node, it's a pretty trivial config. For the time being, I don't have any authentication configured, but in the future I'll be configuring that as well. Here's my changes to the Elasticsearch config (`/etc/elasticsearch/elasticsearch.yml`):
 
@@ -166,7 +166,7 @@ discovery.seed_hosts: ["$ELK_IP_HERE"]
 cluster.initial_master_nodes: ["prod-data-1"]
 ```
 
-## Kibana
+### Kibana
 
 Kibana was fairly trivial to configure as well, just needed to set names and IP addresses.
 
@@ -181,7 +181,7 @@ I'm binding to `0.0.0.0` so that I can access Kibana via the host-only network w
 
 Also, there is the most important configuration change in the whole setup right here: Kibana Dark Mode. In the web UI, go to Management -> Advanced Settings, search for Dark Mode, and flip the switch. May your eyes rest easy.
 
-## Usage
+### Usage
 
 Kibana has a great Zeek dashboard that pulls out lots of nice stats for us to look at for a high-level overview of our network. It has a map with GeoIP data, information about top hosts and applications, and more:
 
@@ -191,7 +191,7 @@ Kibana 7 also uses the new Kibana Query Language (KQL) by default instead of Luc
 
 At this point, I'm still working on getting log ingestion tuned to the point where I can start using the SIEM part of Kibana, so I'll try and do another blog post on that in the future once I have more to show on it. My initial impressions is that it looks awesome, and integrates very nicely with the Filebeat module ecosystem.
 
-# Things to Improve On
+## Things to Improve On
 
 I definitely want to do a v2.0 of this system. Having a mobile lab environment could definitely be helpful in the future, and there are a number of things I want to improve on, either as changes for the current system, or things to be integrated in the new one:
 
@@ -205,6 +205,6 @@ I definitely want to do a v2.0 of this system. Having a mobile lab environment c
 - I'm having issues with GeoIP not working properly, so I need to fix that
 - As mentioned previously, I need to setup authentication and SSL for the Elastic Stack
 
-# Conclusion
+## Conclusion
 
 It's great to have a lab with me wherever I go, and I'm enjoying the flexibility of testing things out on a seperate system. However, I can't run all of my VMs at the same time, due to CPU and memory constraints. This also mimics a real-world component, resource restrictions (yay for me!). All in all, this has been a great experience and I'll hopefully have an update in a few weeks with SIEM improvements and more data being ingested.
