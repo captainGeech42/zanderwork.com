@@ -6,7 +6,7 @@ draft: false
 
 Zander Work is a senior studying Computer Science at [Oregon State University](https://www.oregonstate.edu/), focusing on security. He is a member of [Dr. Yeongjin Jang\'s](https://www.unexploitable.systems/) research group ([SSH Lab](https://ssh.unexploitable.systems/)), focusing on software and systems security.
 
-Currently, he works as a security analyst at the [Oregon Research and Teaching Security Operations Center (ORTSOC)](https://uit.oregonstate.edu/ois) as a student team lead for network monitoring, using tools such as Zeek, Splunk, Elastic, and Nessus. Previously, he worked at:
+Currently, he works as a security analyst at the [OSU Security Operations Center](https://uit.oregonstate.edu/ois) as an analyst on the network monitoring/CTI team, using tools such as Zeek, Splunk, Elastic, and Nessus. Previously, he worked at:
 
 * [FireEye, Inc.](https://www.fireeye.com) as a Technical Intelligence Intern on the Financial Crime team, analyzing malware and tracking new fincrime threats
 * [Pacific Star Communications](https://pacstar.com/) as a Cyber Security intern, working on a variety of internal projects
