@@ -59,11 +59,11 @@ Like most HTB boxes, the website had a lot of placeholder content, but I did see
 
 ![Website screenshot](/img/htb/doctor/website.png)
 
-I added the IP/hostname to my `/etc/hosts`, file, and was redirected to this login page for "Doctor Secure Messaging":
+I added the IP/hostname to my `/etc/hosts`, file, and was redirected to this login page for "Doctor Secure Messaging" upon browsing to `http://doctors.htb`:
 
 ![Messaging site screenshot](/img/htb/doctor/website-domain.png)
 
-Looking at the request in Burp, I saw that the `Server` header is `Werkzeug/1.0.1 Python/3.8.2`, which means that it's most likely using Flask as the web app framework:
+Looking at the request in Burp, I saw that the `Server` header was `Werkzeug/1.0.1 Python/3.8.2`, which means that it's most likely using Flask as the web app framework:
 
 ![Burp screenshot](/img/htb/doctor/burp.png)
 
@@ -87,13 +87,13 @@ Then, I went through the process of creating a new post, which generated an addi
 
 ![Single post view screenshot](/img/htb/doctor/website-singlepost.png)
 
-I noticed that the ID for the post I created was `2`, so I tested for any IDOR vulnerabilities and found a post with an ID of `1`, but it didn't seem to be very relevant to pwning this app:
+I noticed that the ID for the post I created was `2`, so I tested for any IDOR (InDirect Object Reference) vulnerabilities. IDOR vulnerabilities enables an attacker to access data that doesn't implement proper access controls by guessing/identifying an ID/key associated with it and directly accessing it. For more information on IDOR, please see PortSwigger's [Web Security Academy IDOR section](https://portswigger.net/web-security/access-control/idor). I found a post with an ID of `1`, but it didn't seem to be very relevant to pwning this app:
 
 ![Admin post screenshot](/img/htb/doctor/website-adminpost.png)
 
-At this point, I started testing all of the various forms for SQL injection vulnerabilities (login, register, forgot password, edit account, new post, and edit post). In case you are unfamiliar, a SQL injection vulnerability is present when unsanitized input is passed directly into a SQL query. This can lead to arbitrary SQL code execution against a target database. For more details on SQL injection, please see [PortSwigger's Web Security Academy SQL Injection section](https://portswigger.net/web-security/sql-injection). None of the forms were vulnerable to SQL injection unfortunately.
+At this point, I started testing all of the various forms for SQL injection vulnerabilities (login, register, forgot password, edit account, new post, and edit post). In case you are unfamiliar, a SQL injection vulnerability is present when unsanitized input is passed directly into a SQL query. This can lead to arbitrary SQL code execution against a target database. For more details on SQL injection, please see PortSwigger's [Web Security Academy SQL Injection section](https://portswigger.net/web-security/sql-injection). None of the forms were vulnerable to SQL injection unfortunately.
 
-Then, I started testing for server-side template injection (SSTI) vulnerabilities. An SSTI vulnerability is present when unsanitized input is passed to a template _before_ it is rendered, rather than as an input to the render engine as it renders the template. Since I knew Flask was being used, I tested for SSTI using a payload for Jinja2, a Python templating package used by Flask, Ansible, and more.
+Then, I started testing for server-side template injection (SSTI) vulnerabilities. An SSTI vulnerability is present when unsanitized input is passed to a template _before_ it is rendered, rather than as an input to the render engine as it renders the template. Since I knew Flask was being used, I tested for SSTI using a payload for Jinja2, a Python templating package used by Flask, Ansible, and more. For more information on SSTI and how to exploit it in Jinja, please see [this blog post](https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/) by ONSECURITY.
 
 I made a new post using my SSTI test payloads. When rendered on the homepage, it wasn't executing the payload, so it wasn't vulnerable:
 
@@ -105,7 +105,7 @@ But when I checked the `/archive` page, I saw that it executed the payload in th
 
 ## Web App Exploitation
 
-My goal for exploiting the application was to leverage the SSTI vulnerability to pop a shell on the system. To do this, I built a payload that allows me to access the Python globals, and from there pivot to the `os` module to spawn a reverse shell. For more information on SSTI and how to exploit it, please see [this blog post](https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/) by ONSECURITY.
+My goal for exploiting the application was to leverage the SSTI vulnerability to pop a shell on the system. To do this, I built a payload that allowed me to access the Python globals, and from there pivot to the `os` module to spawn a reverse shell. 
 
 I could have done this by starting with an object I create (e.g., an empty string, `""`), and pivoting through some of the internal datastructures (`__class_`, `__mro__`, etc.), but I decided to utilize the `request` object that will be present in the template, thanks to Flask. This enables me to have a constant payload that doesn't require environment-specific array indexes to pivot throughout the internal datastructures.
 
