@@ -1,6 +1,6 @@
 ---
 title: "Hack The Box - Academy"
-date: 2021-02-09T20:49:48-08:00
+date: 2021-02-27T20:49:48-08:00
 draft: false
 tags:
     - security
