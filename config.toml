@@ -27,9 +27,6 @@ googleAnalytics = "UA-143082819-1"
   homeSubtitle = "CS/Security Student"
 
   [[params.social]]
-    name = "email"
-    url = "mailto:zander@zanderwork.com"
-  [[params.social]]
     name = "twitter"
     url = "https://twitter.com/captainGeech42"
   [[params.social]]
@@ -52,7 +49,7 @@ googleAnalytics = "UA-143082819-1"
   readOtherPosts = "Read other posts"
 
   [params.logo]
-    logoText = "cd /zander/work"
+    logoText = "cd /home/zander"
     logoHomeLink = "/" 
 
 [languages]
