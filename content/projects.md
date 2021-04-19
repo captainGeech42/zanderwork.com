@@ -5,14 +5,6 @@ date: 2019-07-14T14:00:29-04:00
 
 I always have a side project that I'm working on (usually more than one). I've highlighted some of the major public ones here, but you can probably find newer info on my [GitHub](https://github.com/captainGeech42)/[GitLab](https://gitlab.com/captainGeech) profiles.
 
-Are you looking for a freelancer to support your cybersecurity projects? Contact me! I'm available for work.
-
-Email:
-
-```
-$ echo "Y29uc3VsdGluZ0B6YW5kZXJ3b3JrLmNvbQo=" | base64 -d
-```
-
 ## RansomWatch
 
 RansomWatch is a tool that helps cyber threat intelligence (CTI) analysts monitor [ransomware leak sites](https://www.bleepingcomputer.com/news/security/list-of-ransomware-that-leaks-victims-stolen-files-if-not-paid/). It scrapes various ransomware leak sites to identify new and removed victims, and sends notifications via Slack when something changes.
