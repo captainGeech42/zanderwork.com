@@ -26,6 +26,10 @@ Email:
 $ echo "Y29uc3VsdGluZ0B6YW5kZXJ3b3JrLmNvbQo=" | base64 -d
 ```
 
+### Talks
+
+I enjoy giving talks on research I'm doing, tools I've built, and fun things I learn about throughout the cybersecurity space. You can view the slides/etc. for my talks on [this GitHub repo](https://github.com/captainGeech42/talks).
+
 ### Hobbies
 
 I'm the current CTF team lead and former president (2017-2020) of the [OSU Security Club](https://www.osusec.org/), where I've lead our CTF and CDC teams to many [impressive accomplishments](https://www.osusec.org/accomplishments/). I compete in a lot of CTF events with the club under the team [OSUSEC](https://ctftime.org/team/12858).
@@ -34,6 +38,6 @@ I also enjoy working on malware analysis and cyber threat intelligence research,
 
 To get away from the computer (apparently you are supposed to do this), I love going outside to enjoy nature, listening to music, and going bowling.
 
-### Source
+### Website Source
 
 This site is available via [clearnet](https://zanderwork.com) and [Tor](http://zandermuwtlu6gr4z4ey2bnogf56este6o742ydwytxp7qj772n3zuyd.onion/). You can view the contents of this site on [GitHub](https://github.com/captainGeech42/zanderwork.com).
