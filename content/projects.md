@@ -15,6 +15,12 @@ Technologies used: Python, sqlite, Docker
 
 ![RansomWatch example](https://raw.githubusercontent.com/captainGeech42/ransomwatch/main/img/slack_example_new_victim.png)
 
+## Homelab
+
+I have a homelab (running VMware) where I learn about different IT technologies, and run the infrastructure for my malware analysis and other personal projects. Check out my [latest blog post](/blog/2021-homelab/) for details on Lab 3.0.
+
+{{< img src="/lab.png" caption="Latest lab diagram (Lab 3.0)" >}}
+
 ## TrainWatch
 
 TrainWatch is an iOS and watchOS app that monitors the status the subway trains in Washington, D.C. and provides a clean interface on your wrist for checking when the next trains will arrive nearest you.
