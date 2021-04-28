@@ -1,6 +1,6 @@
 ---
 title: "2021 Homelab Update (Lab 3.0)"
-date: 2021-04-25T12:36:34-07:00
+date: 2021-04-27T17:48:34-07:00
 draft: false
 toc: true
 tags:
