@@ -15,6 +15,14 @@ Technologies used: Python, sqlite, Docker
 
 ![RansomWatch example](https://raw.githubusercontent.com/captainGeech42/ransomwatch/main/img/slack_example_new_victim.png)
 
+## ORTSOC Infrastructure
+
+This project was a part of my senior design/capstone course at Oregon State University, where I lead a team of five to develop the infrastructure for the Oregon Research & Teaching Security Operations Center (ORTSOC), an experiential learning SOC that will employ students to help monitor customer networks and defend against cyber intrusions. The infrastructure uses the Elastic Stack, nginx, wireguard, BIND9, and a few other components to provide the basic building blocks. I personally worked on the overall system architecture, and helped build playbooks for DNS, Elasticsearch, and NTP. I also helped design and deploy the physical infrastructure running VMware to support the project.
+
+[Git repos](https://github.com/ORTSOC)
+
+Technologies used: Ansible, VMware
+
 ## Homelab
 
 I have a homelab (running VMware) where I learn about different IT technologies, and run the infrastructure for my malware analysis and other personal projects. Check out my [latest blog post](/blog/2021-homelab/) for details on Lab 3.0.
