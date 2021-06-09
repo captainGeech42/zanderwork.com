@@ -4,7 +4,7 @@ date: 2019-06-30T14:45:47-04:00
 draft: false
 toc: true
 tags:
-  - lab
+  - homelab
   - security
 ---
 

@@ -1,0 +1,9 @@
+{{ if .Get "src" }}
+    <div style="text-align: center">
+        <img style="position: relative; display: block; margin-left: auto; margin-right: auto;" src="{{ .Get "src" | safeURL }}" {{ with .Get "alt" }} alt="{{ . | plainify }}" {{ end }} class="{{ with .Get "position"}}{{ . }}{{ else -}} left {{- end }}" {{ with .Get "style" }} style="{{ . | safeCSS }}" {{ end }} />
+
+        {{ if .Get "caption" }}
+            <figcaption ><p>{{ .Get "caption" | safeHTML }}</p></figcaption>
+        {{ end }}
+    </div>
+{{ end }}
