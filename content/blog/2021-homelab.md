@@ -5,6 +5,7 @@ draft: false
 toc: true
 tags:
   - homelab
+  - infra
 ---
 
 I've been working with my homelab since 2016, and it's taken many different forms over the years. Having my own set of servers and networking equipment enables me to explore different enterprise software configurations and deployments that would be difficult to get hands on experience with otherwise. Numerous times, my homelab experience has directly contributed to success in my job, which is always satisifying.
