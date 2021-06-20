@@ -121,7 +121,7 @@ Go into the root Sauerbraten directory (it should have the `server-init.cfg` fil
 
 To simplify things, I put together a Dockerfile and accompanying `docker-compose.yml` that makes it a bit easier to run the server. You can view it on [Docker Hub](https://hub.docker.com/repository/docker/captaingeech/cube2srv) and [GitHub](https://github.com/captainGeech42/cube2srv).
 
-Create this `docker-compose.yml` and do `docker-compose up` to start the server (assuming you have your finishd `server-init.cfg` in the current directory):
+Create this `docker-compose.yml` and do `docker-compose up` to start the server (assuming you have your finished `server-init.cfg` in the current directory):
 
 ```yml
 version: '3'
