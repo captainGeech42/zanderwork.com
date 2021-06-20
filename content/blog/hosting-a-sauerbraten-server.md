@@ -111,7 +111,7 @@ Note that it may not be required for the `adduser`/`authkey` domain to be the sa
 
 When you connect to the server, you can do `/auth authdomain.lan` (replacing `authdomain.lan` with the proper domain), which should respond with a message about you successfully authenticating to the server, and your name should be in green or purple on the scoreboard now (depending on the permissions set for your user above)
 
-## Starting the server
+## Starting the Server
 
 ### Manually
 
